@@ -1,38 +1,48 @@
-use std::collections::HashMap;
-struct SmallMsg<T> {
-    message: T,
-}
+
 fn main() {
-    let mut hash_map: HashMap<&str, &str> = HashMap::new();
-    hash_map.insert("hi", "there");
+    println!("hi there"); 
 
-    let key: &str = "nice";
-    let value: &str = "cool";
-    hash_map.insert(key, value);
+    another_function(5, 'h'); 
 
-    let msg = SmallMsg {
-        message: "hi there",
-    };
-    let msg2: SmallMsg<i32> = SmallMsg { message: 43 };
+    /*
+        Statements and Expressions
+        -----------------------------------------
+        Expression do not include semicolons. If you 
+        add a semicolon to the end of an expression, 
+        you turn it into a statement, and it will not 
+        return a value. 
+     */
+    let y = { 
+        let x = 3; 
+        x + 1
+    }; 
+    println!("The value of y is: {y}");
 
-    println!("{}", msg.message);
-    println!("{:#?}", hash_map);
+    /*
+        Functions with Return Values 
+        -----------------------------------------
+        - declare returns typed with (->)
+        - you can early return by using the "return"
+          keyword and specifying a value, but most 
+          functions return the last expression implicitly
+    
+     */
+    let x = five(); 
+    println!("The value of x is: {x}"); 
 
-    let mut overflow: u32 = 4294967295;
+    let x2 = plus_one(5); 
+    println!("The value of x2 is: {x2}"); 
 
-    let mut user_input = String::new();
+}
 
-    println!("Enter a number:");
-    std::io::stdin()
-        .read_line(&mut user_input)
-        .expect("Error reading line");
+fn plus_one(x: i32) -> i32 { 
+    x + 1
+}
 
-    let user_num: u32 = match user_input.trim().parse() {
-        Ok(num) => num,
-        Err(_) => 0,
-    };
+fn five() -> i32 { 
+    5
+}
 
-    overflow += user_num;
-
-    println!("Total -> {}", overflow);
+fn another_function(value: i32, unit_label: char) { 
+    println!("The measurement is: {value}{unit_label}"); 
 }
