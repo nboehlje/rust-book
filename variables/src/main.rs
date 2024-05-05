@@ -90,7 +90,6 @@ fn main() {
     // and is denoted with an empty parenthesis "()"
     let unit = (); 
 
-    
     /*
         Arrays 
         ----------------------------------------------- 
